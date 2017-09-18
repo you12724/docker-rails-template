@@ -5,10 +5,10 @@ RUN apt-get update -qq && \
                        libpq-dev \
                        nodejs \
                        mysql-client
-RUN mkdir -p /app/src
-WORKDIR /app/src
-ADD ./src/Gemfile /app/src/Gemfile
-ADD ./src/Gemfile.lock /app/src/Gemfile.lock
+RUN mkdir /app
+WORKDIR /app
+ADD Gemfile /app/Gemfile
+ADD Gemfile.lock /app/Gemfile.lock
 RUN bundle install -j4
 ADD . /app
 
